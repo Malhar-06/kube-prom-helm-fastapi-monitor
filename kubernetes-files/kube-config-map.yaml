@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kube-config
+data:
+  config: |
+    apiVersion: v1
+    clusters:
+    - cluster:
+        certificate-authority-data: <certificate-authority-data>
+        server: <api-server-url>
+      name: cluster
+    contexts:
+    - context:
+        cluster: cluster
+        user: user
+      name: context
+    current-context: context
+    kind: Config
+    preferences: {}
+    users:
+    - name: user
+      user:
+        client-certificate-data: <client-certificate-data>
+        client-key-data: <client-key-data>
+

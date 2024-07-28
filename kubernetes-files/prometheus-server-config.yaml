@@ -1,0 +1,21 @@
+apiVersion: v1
+data:
+  prometheus.yml: "# my global config\r\nglobal:\r\n  scrape_interval: 15s # Set the
+    scrape interval to every 15 seconds. Default is every 1 minute.\r\n  evaluation_interval:
+    15s # Evaluate rules every 15 seconds. The default is every 1 minute.\r\n  # scrape_timeout
+    is set to the global default (10s).\r\n\r\n# Alertmanager configuration\r\nalerting:\r\n
+    \ alertmanagers:\r\n    - static_configs:\r\n        - targets:\r\n          #
+    - alertmanager:9093\r\n\r\n# Load rules once and periodically evaluate them according
+    to the global 'evaluation_interval'.\r\nrule_files:\r\n  # - \"first_rules.yml\"\r\n
+    \ # - \"second_rules.yml\"\r\n\r\n# A scrape configuration containing exactly
+    one endpoint to scrape:\r\n# Here it's Prometheus itself.\r\nscrape_configs:\r\n
+    \ # The job name is added as a label `job=<job_name>` to any timeseries scraped
+    from this config.\r\n  - job_name: \"prometheus\"\r\n    static_configs:\r\n      -
+    targets: [\"localhost:9090\"]"
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2024-07-03T05:35:27Z"
+  name: prometheus-server-config
+  namespace: prometheus
+  resourceVersion: "511"
+  uid: eee8b0b7-47f9-4090-bf7c-b6115f806331
